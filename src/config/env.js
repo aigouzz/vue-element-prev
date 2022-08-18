@@ -8,7 +8,7 @@
  */
 
 let baseUrl = ''; 
-let routerMode = 'hash';
+let routerMode = 'history';
 let imgBaseUrl = '';
 
 

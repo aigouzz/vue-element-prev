@@ -29,7 +29,7 @@ vue2 + vuex + vue-router + webpack + ES6/7 + fetch + sass + flex + svg
 #### 注意：由于涉及大量的 ES6/7 等新属性，node 需要 6.0 以上版本
 
 ```
-git clone   
+git clone https://github.com/aigouzz/vue-element-prev.git
 
 cd vue-element
 
