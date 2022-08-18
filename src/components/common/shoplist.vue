@@ -60,6 +60,9 @@
 		<transition name="loading">
 			<loading v-show="showLoading"></loading>
 		</transition>
+		<transition name="alert">
+			<alertTip v-show="showAlertTip" :alertText="alertText" @closeTip="closeTip"></alertTip>
+		</transition>
 	</div>
 </template>
 
@@ -71,6 +74,7 @@ import {imgBaseUrl} from 'src/config/env'
 import {showBack, animate} from 'src/config/mUtils'
 import {loadMore, getImgPath} from './mixin'
 import loading from './loading'
+import alertTip from './alertTip'
 import ratingStar from './ratingStar'
 
 export default {
@@ -83,6 +87,8 @@ export default {
 			showLoading: true, //显示加载动画
 			touchend: false, //没有更多数据
 			imgBaseUrl,
+			showAlertTip: false, //显示弹窗
+			alertText:'',
 		}
 	},
 	mounted(){
@@ -91,6 +97,7 @@ export default {
 	components: {
 		loading,
 		ratingStar,
+		alertTip,
 	},
 	props: ['restaurantCategoryId', 'restaurantCategoryIds', 'sortByType', 'deliveryMode', 'supportIds', 'confirmSelect', 'geohash'],
 	mixins: [loadMore, getImgPath],
@@ -148,14 +155,23 @@ export default {
 		async listenPropChange(){
 			this.showLoading = true;
 			this.offset = 0;
-			let res = await shopList(this.latitude, this.longitude, this.offset, '', this.restaurantCategoryIds, this.sortByType, this.deliveryMode, this.supportIds);
+			try{
+				let res = await shopList(this.latitude, this.longitude, this.offset, '', this.restaurantCategoryIds, this.sortByType, this.deliveryMode, this.supportIds);
+				//考虑到本地模拟数据是引用类型，所以返回一个新的数组
+				this.shopListArr = [...res];
+			}catch(err) {
+				this.showAlertTip = true;
+				this.alertText = err;
+			}
 			this.hideLoading();
-			//考虑到本地模拟数据是引用类型，所以返回一个新的数组
-			this.shopListArr = [...res];
+			
 		},
 		//开发环境与编译环境loading隐藏方式不同
 		hideLoading(){
 			this.showLoading = false;
+		},
+		closeTip() {
+			this.showAlertTip = false;
 		},
 		zhunshi(supports){
 			let zhunStatus;
