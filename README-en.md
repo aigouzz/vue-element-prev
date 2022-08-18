@@ -28,7 +28,7 @@ vue2 + vuex + vue-router + webpack + ES6/7 + fetch + sass + flex + svg
 Note:This project used a lot of properties such as ES6/7, so node 6.0.0+ is required.
 
 ```
-git clone https://github.com/bailicangdu/vue2-elm.git  
+git clone https://github.com/aigouzz/vue-element-prev.git
 
 cd vue2-elm
 
@@ -39,47 +39,6 @@ npm run dev
 ```
 
 
-## More
-This project has the supporting background system. If you want to develop it, you can download the corresponding backend system.[backend system](https://github.com/bailicangdu/node-elm)。
-
-Backend system's run command:npm run local .
-
-If you only do the front-end development, ignore this note.
-
-
-# Explain
-
->  If it helps you, you can click "Star" in the upper right corner to support,thank you. ^_^
-
->  May be you can "follow" me, I will make more interstng projects.
-
->  Development environment: macOS 10.12.3  Chrome 56  nodejs 6.10.0
-
->  Thanks for 辰妹子[@bailichen](https://github.com/bailichen), [@iceRao](https://github.com/raoenhui)，to help complete the project，thank you🌹
-
->  If you hava some question,you can post the question in Issues, and if you find some solution or some improvement，please pull request. 👍
-
->  [communication group](https://gitter.im/vue2-elm/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
-
->  Recommend a open source project about react and redux。[address](https://github.com/bailicangdu/react-pxq)
-
->  Recommend a other demo about vue2 and vuex，it's simple and good for newbie.[address](https://github.com/bailicangdu/vue2-happyfri)
-
-
-## Dscription of the data interface 🤔
-
-### 2017-05-30
-
-For some reason，previous interfaces could not be used, it made the project failed to run.The new backend system is built by nodejs.[backend system address](https://github.com/bailicangdu/node-elm). It can kept consisent with the offical website. And provide corresponding [background management system](https://github.com/bailicangdu/vue2-manage)
-
-
-# Demo
-
-[click it](http://cangdu.org/elm/)（Preview with chrome phone mode please）
-
-### The mobile can scan the qr code in the below
-
-<img src="https://github.com/bailicangdu/vue2-elm/blob/master/screenshots/ewm.png" width="250" height="250"/>
 
 
 
@@ -127,17 +86,6 @@ For some reason，previous interfaces could not be used, it made the project fai
 6, The project was already finished, and have 45 pages.
 
 
-# Ultimate Goal
-
-1, Build a background system to simulate the delivery platform with node.js。[address](https://github.com/bailicangdu/node-elm)
-
-2, Use react-native to write native APP of Android and IOS。[地址在这里](https://github.com/bailicangdu/React-Native-elm)
-
-3、May be I will make a seller's version in the future.
-  
-  So my goal is to build a full ecosystem across the frontend , backend, IOS and Android.
-  
-  ...Waiting for me
 
 
 
@@ -316,7 +264,3 @@ For some reason，previous interfaces could not be used, it made the project fai
 56 directories, 203 files
 ```
 
-
-# License
-
-[GPL](https://github.com/bailicangdu/vue2-elm/blob/master/COPYING)

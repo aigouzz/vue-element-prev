@@ -29,9 +29,9 @@ vue2 + vuex + vue-router + webpack + ES6/7 + fetch + sass + flex + svg
 #### 注意：由于涉及大量的 ES6/7 等新属性，node 需要 6.0 以上版本
 
 ```
-git clone https://github.com/bailicangdu/vue2-elm.git  
+git clone   
 
-cd vue2-elm
+cd vue-element
 
 npm install 或 yarn(推荐)
 
@@ -40,15 +40,7 @@ npm run dev
 ```
 ## 关于接口数据
 
-此项目的所有接口数据都来源于配套的后台系统，[后台项目传送地址](https://github.com/bailicangdu/node-elm)。
-
-如果想体验前后台同时开发，可以下载后台系统。
-
-此时启动本项目的命令为：npm run local 而不是 npm run dev。
-
-同时我们也提供了基于`element-ui`搭建的[后台管理页面](https://github.com/bailicangdu/vue2-manage)
-
-如果只做前端开发，请忽略上面这几句话哟～
+此项目的所有接口数据都来源于配套的后台系统
 
 
 # 说明
@@ -59,24 +51,10 @@ npm run dev
 
 >  开发环境 macOS 10.12.3  Chrome 56  nodejs 6.10.0
 
->  特别感谢[@bailichen](https://github.com/bailichen), [@iceRao](https://github.com/raoenhui)，在百忙之中抽出时间和我一起完成了这个项目，辛苦了🌹
-
->  如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR 👍
-
->  [项目交流群](https://gitter.im/vue2-elm/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
-
->  推荐一个 react + redux 开源项目，对react感兴趣的朋友赶紧去看看。[地址在这里](https://github.com/bailicangdu/react-pxq)
-
->  另外一个 vue2 + vuex 的入门项目，比当前的项目简单很多，非常适合入门练习。[地址在这里](https://github.com/bailicangdu/vue2-happyfri)
 
 
-# 效果演示
 
-[查看demo请戳这里](https://cangdu.org/elm/)（请用chrome手机模式预览）
 
-### 移动端扫描下方二维码
-
-<img src="https://github.com/bailicangdu/vue2-elm/blob/master/screenshots/ewm.png" width="200" height="200"/>
 
 
 
@@ -122,17 +100,6 @@ npm run dev
 5、项目已经完成，共45个页面。
 
 
-# 最终目标
-
-1、用node.js构建一个模拟外卖平台的后台系统。[地址在这里](https://github.com/bailicangdu/node-elm)
-
-2、写出跨 Android 和 IOS 的原生APP版本。[地址在这里](https://github.com/bailicangdu/native-xdm)
-
-3、如果时间来的及，会出一卖家版本。
-
-所以我的目的是构建一个横跨前后端，移动IOS、Android的完整生态圈。
-
-。。。敬请期待
 
 
 
@@ -312,6 +279,4 @@ npm run dev
 56 directories, 203 files
 ```
 
-# License
 
-[GPL](https://github.com/bailicangdu/vue2-elm/blob/master/COPYING)

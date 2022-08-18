@@ -60,7 +60,7 @@ export default {
             imgBaseUrl: 'https://fuss10.elemecdn.com', //图片域名地址
         }
     },
-    async beforeMount(){
+    async created(){
 		if (!this.$route.query.geohash) {
 			const address = await cityGuess();
 			this.geohash = address.latitude + ',' + address.longitude;
