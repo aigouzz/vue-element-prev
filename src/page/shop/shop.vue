@@ -24,7 +24,7 @@
                             <path d="M0 0 L8 7 L0 14"  stroke="#fff" stroke-width="1" fill="none"/>
                         </svg>
                     </router-link>
-                    <footer class="description_footer" v-if="shopDetailData.activities.length" @click="showActivitiesFun">
+                    <footer class="description_footer" v-if="shopDetailData.activities && shopDetailData.activities.length" @click="showActivitiesFun">
                         <p class="ellipsis">
                             <span class="tip_icon" :style="{backgroundColor: '#' + shopDetailData.activities[0].icon_color, borderColor: '#' + shopDetailData.activities[0].icon_color}">{{shopDetailData.activities[0].icon_name}}</span>
                             <span>{{shopDetailData.activities[0].description}}（APP专享）</span>
@@ -45,7 +45,7 @@
                     </h3>
                     <section class="activities_list">
                         <header class="activities_title_style"><span>优惠信息</span></header>
-                        <ul>
+                        <ul v-if="shopDetailData.activities">
                             <li v-for="item in shopDetailData.activities" :key="item.id">
                                 <span class="activities_icon" :style="{backgroundColor: '#' + item.icon_color, borderColor: '#' + item.icon_color}">{{item.icon_name}}</span>
                                 <span>{{item.description}}（APP专享）</span>
@@ -207,18 +207,18 @@
                                 <section class="rating_header_left">
                                     <p>{{shopDetailData.rating}}</p>
                                     <p>综合评价</p>
-                                    <p>高于周边商家{{(ratingScoresData.compare_rating*100).toFixed(1)}}%</p>
+                                    <p>高于周边商家{{Number(ratingScoresData.compare_rating*100).toFixed(1)}}%</p>
                                 </section>
                                 <section class="rating_header_right">
                                     <p>
                                         <span>服务态度</span>
                                         <rating-star :rating='ratingScoresData.service_score'></rating-star>
-                                        <span class="rating_num">{{ratingScoresData.service_score.toFixed(1)}}</span>
+                                        <span class="rating_num">{{Number(ratingScoresData.service_score).toFixed(1)}}</span>
                                     </p>
                                     <p>
                                         <span>菜品评价</span>
                                         <rating-star :rating='ratingScoresData.food_score'></rating-star>
-                                        <span class="rating_num">{{ratingScoresData.food_score.toFixed(1)}}</span>
+                                        <span class="rating_num">{{Number(ratingScoresData.food_score).toFixed(1)}}</span>
                                     </p>
                                     <p>
                                         <span>送达时间</span>
@@ -434,16 +434,41 @@
                     this.RECORD_ADDRESS(res);
                 }
                 //获取商铺信息
-                this.shopDetailData = await shopDetails(this.shopId, this.latitude, this.longitude);
+                try{
+                    this.shopDetailData = await shopDetails(this.shopId, this.latitude, this.longitude);
+                }catch(err) {
+                    console.log('请求shopdetail出错',err);
+                    this.shopDetailData = {};
+                }
                 //获取商铺食品列表
-                this.menuList = await foodMenu(this.shopId);
+                try{
+                    this.menuList = await foodMenu(this.shopId);
+                }catch(err) {
+                    console.log('请求foodMenu出错',err);
+                    this.menuList = [];
+                }
                 //评论列表
-                this.ratingList = await getRatingList(this.shopId, this.ratingOffset);
+                try{
+                    this.ratingList = await getRatingList(this.shopId, this.ratingOffset);
+                }catch(err) {
+                    console.log('请求getRatingList出错',err);
+                    this.ratingList = [];
+                }
                 //商铺评论详情
-                this.ratingScoresData = await ratingScores(this.shopId);
+                try{
+                    this.ratingScoresData = await ratingScores(this.shopId);
+                }catch(err){
+                    console.log('请求ratingScores出错',err);
+                    this.ratingScoresData = {};
+                }
                 //评论Tag列表
-                this.ratingTagsList = await ratingTags(this.shopId);
-                this.RECORD_SHOPDETAIL(this.shopDetailData)
+                try{
+                    this.ratingTagsList = await ratingTags(this.shopId);
+                }catch(err) {
+                    console.log('请求ratingTags出错',err);
+                    this.ratingTagsList = [];
+                }
+                this.RECORD_SHOPDETAIL(this.shopDetailData);
                 //隐藏加载动画
                 this.hideLoading();
             },
