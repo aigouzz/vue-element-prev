@@ -274,3 +274,40 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
         })
     }, 20);
 }
+
+
+/**
+ * 深度克隆
+ * @param {object} obj  要克隆的对象或者值
+ * 检测非object和null，直接返回
+ * 检测RegExp类型，返回一个新的正则对象
+ * 检测Map类型，返回一个新的Map类型，值相同
+ * 检测Set类型，返回一个新的Set类型，值相同
+ * 检测Object，array，通过迭代方式给新的对象赋值，循环deepclone
+ */
+export const deepclone = (obj) => {
+    if(typeof obj !== 'object' || !obj) return obj;
+    let result = null;
+    if(obj instanceof RegExp){
+        result = new RegExp(obj);
+        return result;
+    }else if(obj instanceof Map){
+        result = new Map();
+        obj.forEach((item, key) => {
+            result.set(key, item);
+        });
+        return result;
+    } else if(obj instanceof Set) {
+        result = new Set();
+        obj.forEach((item, index) => {
+            result.add(item);
+        });
+        return result;
+    } else {
+        result = new obj.constructor();
+        for(let i in obj) {
+            result[i] = deepclone(obj[i]);
+        }
+        return result;
+    }
+}
