@@ -1,7 +1,7 @@
  <template>
     <div class="order_page">
         <head-top head-title="订单列表" go-back='true'></head-top>
-        <ul class="order_list_ul" v-load-more="loaderMore">
+        <ul class="order_list_ul" v-load-more="loaderMore" v-if="orderList.length > 0">
             <li class="order_list_li" v-for="item in orderList" :key="item.id">
                 <img :src="imgBaseUrl + item.restaurant_image_url" class="restaurant_image">
                 <section class="order_item_right">
@@ -32,6 +32,7 @@
                 </section>
             </li>
         </ul>
+        <div class="order_none" v-else>暂无订单</div>
         <foot-guide></foot-guide>
         <transition name="loading">
             <loading v-show="showLoading"></loading>
@@ -221,5 +222,10 @@
     .router-slid-enter, .router-slid-leave-active {
         transform: translate3d(2rem, 0, 0);
         opacity: 0;
+    }
+    .order_none{
+        @include sc(.75rem, #000);
+        line-height: 1rem;
+        padding-top: 1rem;
     }
 </style>
