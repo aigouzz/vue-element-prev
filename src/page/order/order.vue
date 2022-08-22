@@ -226,6 +226,7 @@
     .order_none{
         @include sc(.75rem, #000);
         line-height: 1rem;
-        padding-top: 1rem;
+        padding-top: 2.95rem;
+        text-align: center;
     }
 </style>
