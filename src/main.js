@@ -15,7 +15,7 @@ const router = new VueRouter({
 		    return savedPosition
 		} else {
 			if (from.meta.keepAlive) {
-				from.meta.savedPosition = document.body.scrollTop;
+				from.meta.savedPosition = document.documentElement.scrollTop;
 			}
 		    return { x: 0, y: to.meta.savedPosition || 0 }
 		}

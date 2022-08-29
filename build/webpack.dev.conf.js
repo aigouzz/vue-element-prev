@@ -33,7 +33,6 @@ module.exports = merge(baseWebpackConfig, {
             template: 'index.html',
             favicon: 'favicon.ico',
             inject: true
-        }),
-        new webpackBundleAnalyser()
+        })
     ]
 })
